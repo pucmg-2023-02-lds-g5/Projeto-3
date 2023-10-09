@@ -14,13 +14,14 @@ export class Aluno extends Usuario {
         rg: string, 
         cpf: string, 
         email: string, 
+        senha: string,
         endereco: string, 
         instituicao: Instituicao, 
         saldoDeMoedas: number,
         curso: string, 
         recebimentoDeMoedas: Array<Transicao>
     ) {
-        super(nome, rg, cpf, email, endereco, instituicao, saldoDeMoedas);
+        super(nome, rg, cpf, email, senha, endereco, instituicao, saldoDeMoedas);
         this.curso = curso;
         this.recebimentoDeMoedas = recebimentoDeMoedas;
     }

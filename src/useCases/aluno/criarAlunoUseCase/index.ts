@@ -1,7 +1,7 @@
 import { IAlunoRepository } from "../../../repository/alunoRepository/IAlunoRepository";
 import { MySQLAlunoRepository } from "../../../repository/alunoRepository/implementation/MySQLAlunoRepository";
-import { CriarAlunoController } from "./criarAlunoController";
-import { CriarAlunoUseCase } from "./criarAlunoUseCase";
+import { CriarAlunoController } from "./CriarAlunoController";
+import { CriarAlunoUseCase } from "./CriarAlunoUseCase";
 
 const alunoRepository: IAlunoRepository = new MySQLAlunoRepository();
 

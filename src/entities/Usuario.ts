@@ -6,6 +6,7 @@ export abstract class Usuario {
     private rg: string;
     private cpf: string;
     private email: string;
+    private senha: string;
     private endereco: string;
     private instituicao: Instituicao;
     private saldoDeMoedas: number;
@@ -15,7 +16,8 @@ export abstract class Usuario {
         nome: string, 
         rg: string, 
         cpf: string, 
-        email: string, 
+        email: string,
+        senha: string,
         endereco: string, 
         instituicao: Instituicao, 
         saldoDeMoedas: number
@@ -24,6 +26,7 @@ export abstract class Usuario {
         this.rg = rg
         this.cpf = cpf
         this.email = email
+        this.senha = senha
         this.endereco = endereco
         this.instituicao = instituicao
         this.saldoDeMoedas = saldoDeMoedas
@@ -59,6 +62,14 @@ export abstract class Usuario {
 
     public setEmail(email: string): void {
         this.email = email;
+    }
+
+    public getSenha(): string {
+        return this.senha;
+    }
+
+    public setSenha(senha: string): void {
+        this.senha = senha;
     }
 
     public getEndereco(): string {

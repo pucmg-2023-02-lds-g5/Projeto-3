@@ -1,11 +1,13 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/db";
+import { InstituicaoModel } from "./InstituicaoModel";
 
 export class AlunoModel extends Model {
     declare nome: string;
     declare rg: string;
     declare cpf: string;
     declare email: string;
+    declare senha: string;
     declare endereco: string; 
     declare instituicao: string; 
     declare saldoDeMoedas: number;
@@ -25,10 +27,15 @@ AlunoModel.init(
         cpf: {
             type: new DataTypes.STRING(14),
             allowNull: false,
+            primaryKey: true
         },
         email: {
             type: new DataTypes.STRING(128),
             allowNull: false,
+        },
+        senha: {
+            type: new DataTypes.STRING(128),
+            allowNull: false
         },
         endereco: {
             type: new DataTypes.STRING(255),
@@ -48,7 +55,9 @@ AlunoModel.init(
         },
     },
     {
-        tableName: 'alunos', // O nome da tabela no seu banco de dados
-        sequelize, // passando a instância `sequelize` é obrigatório
+        tableName: 'alunos',
+        sequelize,
     }
 );
+
+AlunoModel.belongsTo(InstituicaoModel, {targetKey: "id"});

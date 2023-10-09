@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CriarAlunoUseCase } from "./criarAlunoUseCase";
+import { CriarAlunoUseCase } from "./CriarAlunoUseCase";
 
 export class CriarAlunoController {
     private criarAlunoUseCase: CriarAlunoUseCase;

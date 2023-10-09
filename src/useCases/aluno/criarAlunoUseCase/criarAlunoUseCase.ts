@@ -1,7 +1,7 @@
 import { Aluno } from "../../../entities/Aluno";
 import { Instituicao } from "../../../entities/Instituicao";
 import { IAlunoRepository } from "../../../repository/alunoRepository/IAlunoRepository";
-import { ICriarAlunoDTO } from "./IcriarAlunoDTO";
+import { ICriarAlunoDTO } from "./ICriarAlunoDTO";
 
 export class CriarAlunoUseCase {
     private alunoRepository: IAlunoRepository;
@@ -17,12 +17,13 @@ export class CriarAlunoUseCase {
             throw new Error("Aluno já cadastrado");
         }
 
-        const {nome, rg, cpf, email, endereco, instituicao, curso} = data;
+        const {nome, rg, cpf, email, senha, endereco, instituicao, curso} = data;
         const aluno = new Aluno(
             nome,
             rg,
             cpf,
             email,
+            senha,
             endereco,
             new Instituicao(instituicao),
             0,
