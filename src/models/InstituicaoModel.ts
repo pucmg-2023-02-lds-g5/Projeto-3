@@ -10,6 +10,7 @@ InstituicaoModel.init(
         nome: {
             type: new DataTypes.STRING(128),
             allowNull: false,
+            unique: true
         }
     },
     {

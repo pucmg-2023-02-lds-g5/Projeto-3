@@ -27,7 +27,7 @@ AlunoModel.init(
         cpf: {
             type: new DataTypes.STRING(14),
             allowNull: false,
-            primaryKey: true
+            unique: true
         },
         email: {
             type: new DataTypes.STRING(128),
@@ -60,4 +60,4 @@ AlunoModel.init(
     }
 );
 
-AlunoModel.belongsTo(InstituicaoModel, {targetKey: "id"});
+AlunoModel.belongsTo(InstituicaoModel, {targetKey: "nome"});

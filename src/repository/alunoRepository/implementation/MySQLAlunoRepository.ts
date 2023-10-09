@@ -38,6 +38,7 @@ export class MySQLAlunoRepository implements IAlunoRepository {
             rg: aluno.getRg(),
             cpf: aluno.getCpf(),
             email: aluno.getEmail(),
+            senha: aluno.getSenha(),
             endereco: aluno.getEndereco(),
             instituicao: instituicao.getNome(),
             saldoDeMoedas: aluno.getSaldoDeMoedas(),

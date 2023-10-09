@@ -9,34 +9,74 @@
 <body>
   <div class="wrapper">
     <h2>Registro Aluno</h2>
-    <form action="#">
+    <form id="registroAlunoForm">
       <div class="input-box">
-        <input type="text" placeholder="Nome" required>
+        <input type="text" id="nomeInput" placeholder="Nome" required>
       </div>
       <div class="input-box">
-        <input type="text" placeholder="Enter your email" required>
+        <input type="email" id="emailInput" placeholder="Enter your email" required>
       </div>
       <div class="input-box">
-        <input type="text" placeholder="CPF" required>
+        <input type="password" id="passwordInput" placeholder="Enter your password" required>
       </div>
       <div class="input-box">
-        <input type="text" placeholder="RG" required>
+        <input type="text" id="cpfInput" placeholder="CPF" required>
       </div>
       <div class="input-box">
-        <input type="text" placeholder="Endereço" required>
+        <input type="text" id="rgInput" placeholder="RG" required>
       </div>
       <div class="input-box">
-        <input type="text" placeholder="Instituição" required>
+        <input type="text" id="enderecoInput" placeholder="Endereço" required>
       </div>
       <div class="input-box">
-        <input type="text" placeholder="Curso" required>
+        <input type="text" id="instituicaoInput" placeholder="Instituição" required>
+      </div>
+      <div class="input-box">
+        <input type="text" id="cursoInput" placeholder="Curso" required>
       </div>
       
       <div class="input-box button">
-        <input type="Submit" value="Registrar">
+        <input type="button" value="Registrar" onclick="registar(event)">
       </div>
-      
     </form>
   </div>
+
+  <script>
+    function registar(event) {
+      event.preventDefault();
+
+      const nome = document.getElementById('nomeInput').value;
+      const email = document.getElementById('emailInput').value;
+      const password = document.getElementById("passwordInput").value;
+      const cpf = document.getElementById('cpfInput').value;
+      const rg = document.getElementById('rgInput').value;
+      const endereco = document.getElementById('enderecoInput').value;
+      const instituicao = document.getElementById('instituicaoInput').value;
+      const curso = document.getElementById('cursoInput').value;
+
+      const requestData = {
+        nome: nome,
+        email: email,
+        senha: password,
+        cpf: cpf,
+        rg: rg,
+        endereco: endereco,
+        instituicao: instituicao,
+        curso: curso
+      };
+
+      const options = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'User-Agent': 'insomnia/2023.5.8'},
+        body: JSON.stringify(requestData)
+      };
+
+      fetch('http://localhost:3000/aluno/criar', options)
+        .then(response => response.json())
+        .then(response => alert(response))
+        .catch(err => console.error(err));
+    }
+
+  </script>
 </body>
 </html>

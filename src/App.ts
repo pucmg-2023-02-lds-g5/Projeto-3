@@ -3,8 +3,10 @@ import config from "config";
 import sequelize from './config/db';
 import { router as alunoRouter } from './routers/alunoRouter';
 import { router as empresaRouter } from './routers/empresaRouter';
+import cors from "cors";
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 

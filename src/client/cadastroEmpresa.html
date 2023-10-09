@@ -10,27 +10,61 @@
 <body>
   <div class="wrapper">
     <h2>Registro Empresa</h2>
-    <form action="#">
+    <form id="registroForm">
       <div class="input-box">
-        <input type="text" placeholder="Nome" required>
+        <input type="text" id="nomeInput" placeholder="Nome" required>
       </div>
       <div class="input-box">
-        <input type="text" placeholder="E-mail" required>
+        <input type="email" id="emailInput" placeholder="E-mail" required>
       </div>
       <div class="input-box">
-        <input type="text" placeholder="CNPJ" required>
+        <input type="text" id="cnpjInput" placeholder="CNPJ" required>
       </div>
       <div class="input-box">
-        <input type="text" placeholder="Senha" required>
+        <input type="password" id="senhaInput" placeholder="Senha" required>
       </div>
       <div class="input-box">
-        <input type="text" placeholder="Confirmar senha" required>
+        <input type="password" id="confirmarSenhaInput" placeholder="Confirmar senha" required>
       </div>
       <div class="input-box button">
         <input type="Submit" value="Registrar">
       </div>
-      
     </form>
   </div>
+
+  <script>
+    document.getElementById('registroForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const nome = document.getElementById('nomeInput').value;
+      const email = document.getElementById('emailInput').value;
+      const cnpj = document.getElementById('cnpjInput').value;
+      const senha = document.getElementById('senhaInput').value;
+      const confirmarSenha = document.getElementById('confirmarSenhaInput').value;
+
+      if (senha !== confirmarSenha) {
+        alert('As senhas não coincidem');
+        return;
+      }
+
+      const requestData = {
+        nome: nome,
+        email: email,
+        cnpj: cnpj,
+        senha: senha
+      };
+
+      const options = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'User-Agent': 'insomnia/2023.5.8'},
+        body: JSON.stringify(requestData)
+      };
+
+      fetch('http://localhost:3000/empresa/criar', options)
+        .then(response => response.json())
+        .then(response => alert(response.msg))
+        .catch(err => console.error(err));
+    });
+  </script>
 </body>
 </html>

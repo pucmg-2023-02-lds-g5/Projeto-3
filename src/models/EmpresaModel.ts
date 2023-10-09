@@ -21,6 +21,7 @@ EmpresaModel.init(
         cnpj: {
             type: new DataTypes.STRING(14),
             allowNull: false,
+            unique: true
         },
         senha: {
             type: new DataTypes.STRING(128),
