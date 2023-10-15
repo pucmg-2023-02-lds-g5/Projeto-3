@@ -15,7 +15,7 @@ export class RemoverAlunoController {
 
             return res.json({msg: "Aluno removido com sucesso."});
         } catch (error) {
-            return res.json({msg: "Erro inexperado"});
+            return res.status(400).json({msg: "Erro inexperado"});
         }
     }
        
