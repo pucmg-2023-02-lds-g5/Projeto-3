@@ -6,13 +6,13 @@ import { router as empresaRouter } from './routers/empresaRouter';
 import cors from "cors";
 
 const app = express();
+
+app.use('/', express.static(__dirname + "/client"));
+
 app.use(cors());
 
 app.use(express.json());
 
-app.get('/', (req: Request, res: Response) => {
-    res.send('Hello World!');
-});
 
 app.use("/aluno", alunoRouter);
 
