@@ -34,11 +34,15 @@
             <option value="pessoa2">Pessoa 2</option>
             <option value="pessoa3">Pessoa 3</option>
         </select>
-        Quantidade: <input type="text" name="quantia" placeholder="0"><br>
+        Quantidade: <input type="text" id="quantia" placeholder="0"><br>
         <label for="descricao">Descrição:</label>
         <textarea id="descricao" rows="4"></textarea>
         <button type="submit">Enviar</button>
     </form>
     </div>
+    <script>
+        const moeda = document.getElementById('quantia').value;
+        const descricao = document.getElementById('descricao').value;
+    </script>
 </body>
 </html>
