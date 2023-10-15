@@ -21,7 +21,7 @@ export class LoginEmpresaUseCase {
             throw new Error("Email ou senha incorreto");
         }
 
-        const authorization = sign({cpf: verificarEmpresa.getCnpj()}, config.get<string>("jwtSecret"))
+        const authorization = sign({cnpj: verificarEmpresa.getCnpj()}, config.get<string>("jwtSecret"))
 
         return authorization;
     }
