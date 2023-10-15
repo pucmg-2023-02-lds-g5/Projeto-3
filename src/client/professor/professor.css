@@ -2,3 +2,15 @@
     border-style: solid;
     max-width: 20%;
 }
+body {
+    font-family: Arial, sans-serif;
+}
+#enviarMoedas {
+    display: none;
+    max-width: 300px;
+    margin: 0 auto;
+}
+#enviarMoedas label {
+    display: block;
+    margin-top: 10px;
+}

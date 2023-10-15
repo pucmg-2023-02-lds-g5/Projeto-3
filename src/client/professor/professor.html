@@ -4,14 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="professor.css">
-    <title>Document</title>
+    <title>Tela Professor</title>
 </head>
 <body>
     <div class="moedas">
         <h2> Saldo de Moedas:</h2>
+        <p id="saldo"></p>
         <script>
-            
+            document.getElementById("saldo").innerHTML = 1000;
         </script>
+    </div>
+    <div>
+        <button id="AbrirForm">Enviar Moedas</button>
+
+    <script>
+        const AbrirForm = document.getElementById("AbrirForm");
+
+        AbrirForm.addEventListener("click", () => {
+            const enviarMoedas = document.getElementById("enviarMoedas");
+            enviarMoedas.style.display = "block";
+        });
+    </script>
+
+    <form id="enviarMoedas">
+        <h2>Formulário de Envio de Moedas</h2>
+        <label for="recipiente">Escolha uma pessoa:</label>
+        <select id="recipiente">
+            <option value="pessoa1">Pessoa 1</option>
+            <option value="pessoa2">Pessoa 2</option>
+            <option value="pessoa3">Pessoa 3</option>
+        </select>
+        Quantidade: <input type="text" name="quantia" placeholder="0"><br>
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" rows="4"></textarea>
+        <button type="submit">Enviar</button>
+    </form>
     </div>
 </body>
 </html>
