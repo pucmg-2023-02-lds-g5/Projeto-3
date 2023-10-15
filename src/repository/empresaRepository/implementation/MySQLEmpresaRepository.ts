@@ -12,7 +12,7 @@ export class MySQLEmpresaRepository implements IEmpresaRepository {
         if(empresaEncontrada){
             return new Empresa(
                 empresaEncontrada.nome,
-                empresaEncontrada?.email,
+                empresaEncontrada.email,
                 empresaEncontrada.cnpj,
                 empresaEncontrada.senha
             );
@@ -20,6 +20,23 @@ export class MySQLEmpresaRepository implements IEmpresaRepository {
 
         return null;
     }
+
+    async encontrarPeloEmail(email: string): Promise<Empresa | null> {
+
+        const empresaEncontrada = await EmpresaModel.findOne({where: {email: email}});
+
+        if(empresaEncontrada){
+            return new Empresa(
+                empresaEncontrada.nome,
+                empresaEncontrada.email,
+                empresaEncontrada.cnpj,
+                empresaEncontrada.senha
+            );
+        }
+
+        return null;
+    }
+
     async criarEmpresa(empresa: Empresa): Promise<void> {
         // throw new Error("Method not implemented.");
 
@@ -30,11 +47,25 @@ export class MySQLEmpresaRepository implements IEmpresaRepository {
             senha: empresa.getSenha()
         });
     }
+
     async removerEmpresa(empresa: Empresa): Promise<void> {
-        throw new Error("Method not implemented.");
+        const verificarAluno = await EmpresaModel.findOne({ where: { cnpj: empresa.getCnpj() } });
+
+        if(verificarAluno){
+            await verificarAluno.destroy();
+        }
+
     }
+
     async encontrarTodasEmpresas(): Promise<Empresa[]> {
-        throw new Error("Method not implemented.");
+        const todasEmpresasModel = await EmpresaModel.findAll();
+        const todasEmpresas: Empresa[] = [];
+
+        for(const empresa of todasEmpresasModel){
+            todasEmpresas.push(new Empresa(empresa.nome, empresa.email, empresa.cnpj, empresa.senha))
+        }
+
+        return todasEmpresas;
     }
     
 }

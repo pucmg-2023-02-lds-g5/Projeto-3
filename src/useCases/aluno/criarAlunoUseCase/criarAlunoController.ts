@@ -14,7 +14,7 @@ export class CriarAlunoController {
 
             return res.json({msg: "Aluno registrado"});
         } catch (error) {
-            return res.json({msg: "Erro inexperado"});
+            return res.status(400).json({msg: "Erro inexperado"});
         }
     }
 }

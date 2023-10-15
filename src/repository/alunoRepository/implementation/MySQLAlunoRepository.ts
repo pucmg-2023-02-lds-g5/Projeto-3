@@ -28,6 +28,27 @@ export class MySQLAlunoRepository implements IAlunoRepository {
 
     }
 
+    async encontrarPeloEmail(email: string): Promise<Aluno | null> {
+        const verificarAluno = await AlunoModel.findOne({ where: { email: email } });
+
+        if(verificarAluno){
+            return new Aluno(
+                verificarAluno.nome,
+                verificarAluno.rg,
+                verificarAluno.cpf,
+                verificarAluno.email,
+                verificarAluno.senha,
+                verificarAluno.endereco,
+                new Instituicao(verificarAluno.instituicao),
+                verificarAluno.saldoDeMoedas,
+                verificarAluno.curso,
+                []
+            )
+        }
+
+        return null;
+    }
+
     async criarNovo(aluno: Aluno): Promise<void> {
         // throw new Error("Method not implemented.");
 
