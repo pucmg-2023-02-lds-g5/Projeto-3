@@ -35,8 +35,8 @@ Como usuário do sistema, desejo ter um login e senha cadastrados para acessar o
 
 ### Diagrama Caso de Uso
 
-![Diagrama de Caso de Uso](Diagramadecasodeuso.png)
+![Diagrama de Caso de Uso](diagrama_casos_de_uso.png)
 ### Diagrama de classe
 
-![image](https://github.com/pucmg-2023-02-lds-g5/Projeto-3/assets/99293679/40b4f6b1-183c-461f-bbf1-91985a3d2ef3)
+![image](diagrama_de_classe_lab_projeto.drawio.png)
 
