@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Document</title>
+</head>
+
 <style>
 body {
   background-color: #FFFFFF;
@@ -50,6 +61,49 @@ svg {
     margin-bottom: 10px;
 }
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ADD8E6;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 4px; /* Adiciona bordas arredondadas ao dropdown */
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #5A5C6C; color:#fff}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Adiciona estilos ao botão dropdown */
+.dropbtn {
+  background-color: #ADD8E6;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px; /* Adiciona bordas arredondadas ao botão */
+}
+
+/* Muda a cor de fundo do botão quando o mouse está sobre ele */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #5A5C6C;
+}
+
+
 
 #Polygon-1 , #Polygon-2 , #Polygon-3 , #Polygon-4 , #Polygon-4, #Polygon-5 {
     stroke:#ADD8E6; 
@@ -79,6 +133,9 @@ svg {
 
 
 </style>
+
+</script>
+
 <svg width="380px" height="500px" viewBox="0 0 837 1045" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
         <path d="M353,9 L626.664028,170 L626.664028,487 L353,642 L79.3359724,487 L79.3359724,170 L353,9 Z" id="Polygon-1" stroke="#007FB2" stroke-width="6" sketch:type="MSShapeGroup"></path>
@@ -93,11 +150,27 @@ svg {
   <p>Sistema reconhecimento do mérito estudantil</p>
   <div class="buttons-con">
     <div class="action-link-wrap">
-      <a href="{{ route('login_empresa') }}" class="link-button">Log in (Empresas)</a>
-      <a href="{{ route('login_professor') }}" class="link-button">Log in (Professores)</a>
-      <a href="{{ route('login_aluno') }}" class="link-button">Log in (Alunos)</a>
-      <a href="{{ route('alunos.cadastro') }}" class="link-button">Cadastre-se (Alunos)</a>
-      <a href="{{ route('empresas.cadastro') }}" class="link-button">Cadastre-se (Empresas)</a>
+      <div class="dropdown">
+        <button class="dropbtn">Login</button>
+        <div class="dropdown-content">
+          <a href="{{ route('login_empresa') }}">Empresas</a>
+          <a href="{{ route('login_professor') }}">Professores</a>
+          <a href="{{ route('login_aluno') }}">Alunos</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Cadastre-se</button>
+        <div class="dropdown-content">
+          <a href="{{ route('alunos.cadastro') }}">Alunos</a>
+          <a href="{{ route('empresas.cadastro') }}">Empresas</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+
+
+</html>
+
+

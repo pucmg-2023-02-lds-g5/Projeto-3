@@ -163,7 +163,13 @@ button[type="submit"]:hover{
 
                @foreach ($transacoes as $transacao)
                    <tr class="border-b hover:bg-orange-100 bg-gray-100">
-                       <td class="p-3 px-5">{{ $transacao->aluno->nome }}</td>
+                        <td class="p-3 px-5">
+                            @if($transacao->aluno)
+                                {{ $transacao->aluno->nome }}
+                            @else
+                                Aluno excluído
+                            @endif
+                        </td>
                        <td class="p-3 px-5">{{ $transacao->quantidade }}</td>
                        <td class="p-3 px-5">{{ $transacao->mensagem }}</td>
                        <td class="p-3 px-5">{{ $transacao->created_at }}</td>

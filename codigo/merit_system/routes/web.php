@@ -61,6 +61,12 @@ Route::post('/logout_professor', [ProfessorController::class, 'logout'])->name('
 Route::get('/index_professor', [ProfessorController::class, 'index'])->name('index_professor');
 Route::get('/professores/transacoes', 'App\Http\Controllers\ProfessorController@transacoes')->name('professores.transacoes');
 Route::post('/professores/enviarMoedas', 'App\Http\Controllers\ProfessorController@enviarMoedas')->name('professores.enviarMoedas');
+View::composer('*', function ($view) {
+    if (Auth::guard('professor')->check()) {
+        $professor = Auth::guard('professor')->user();
+        $view->with('professor', $professor);
+    }
+});
 
 Route::get('/cadastro_empresa', 'App\Http\Controllers\EmpresaController@create')->name('empresas.cadastro');
 Route::post('/cadastro_empresa', 'App\Http\Controllers\EmpresaController@processCadastro')->name('empresas.store');
