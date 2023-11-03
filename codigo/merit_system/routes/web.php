@@ -46,6 +46,10 @@ Route::get('/crud_alunos', [AlunoController::class, 'crud'])->name('alunos.crud'
 Route::get('/alunos/{aluno}/edit', 'App\Http\Controllers\AlunoController@edit')->name('alunos.edit');
 Route::put('/alunos/{aluno}', 'App\Http\Controllers\AlunoController@update')->name('alunos.update');
 Route::get('/alunos/transacoes', 'App\Http\Controllers\AlunoController@transacoes')->name('alunos.transacoes');
+Route::get('/alunos/vantagens', 'App\Http\Controllers\VantagemController@alunosVantagens')->name('vantagens.alunos');
+Route::get('/vantagens', 'App\Http\Controllers\VantagemController@index')->name('vantagens.index');
+Route::get('/vantagens/disponiveis', 'App\Http\Controllers\VantagemController@vantagensDisponiveis')->name('vantagens.disponiveis');
+Route::get('/vantagens/{id}/resgatar', 'App\Http\Controllers\VantagemController@resgatar')->name('vantagens.resgatar');
 Route::resource('alunos', AlunoController::class);
 View::composer('*', function ($view) {
     if (Auth::guard('aluno')->check()) {
@@ -78,5 +82,10 @@ Route::get('/crud_empresas', [EmpresaController::class, 'crud'])->name('empresas
 Route::get('/empresas/{empresa}/edit', 'App\Http\Controllers\EmpresaController@edit')->name('empresas.edit');
 Route::put('/empresas/{empresa}', 'App\Http\Controllers\EmpresaController@update')->name('empresas.update');
 Route::delete('/empresas/{empresa}', 'App\Http\Controllers\EmpresaController@destroy')->name('empresas.destroy');
-
+Route::get('/empresas/vantagens', 'App\Http\Controllers\VantagemController@empresasVantagens')->name('vantagens.empresas');
+Route::get('/empresas/vantagens/create', 'App\Http\Controllers\VantagemController@create')->name('vantagens.create');
+Route::post('/empresas/vantagens', 'App\Http\Controllers\VantagemController@store')->name('vantagens.store');
+Route::get('/empresas/vantagens/{id}/edit', 'App\Http\Controllers\VantagemController@edit')->name('vantagens.edit');
+Route::put('/empresas/vantagens/{id}', 'App\Http\Controllers\VantagemController@update')->name('vantagens.update');
+Route::delete('/empresas/vantagens/{id}', 'App\Http\Controllers\VantagemController@destroy')->name('vantagens.destroy');
 

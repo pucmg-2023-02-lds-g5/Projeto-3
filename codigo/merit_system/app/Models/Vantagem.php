@@ -10,15 +10,25 @@ class Vantagem extends Model
 {
     use HasFactory;
 
+    protected $table = 'vantagens';
+
     protected $fillable = [
         'descricao',
         'custo_em_moedas',
         'imagem',
-        'empresa_id',
+        'id_empresa',
+        'nome',
     ];
 
     public function empresa()
     {
         return $this->belongsTo(Empresa::class);
     }
+
+    public function alunos()
+{
+    return $this->belongsToMany(Aluno::class, 'aluno_vantagem');
+}
+
+
 }

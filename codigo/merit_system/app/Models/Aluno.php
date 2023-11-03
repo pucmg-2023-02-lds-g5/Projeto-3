@@ -42,4 +42,11 @@ public function setRememberToken($value)
     $this->remember_token = $value;
 }
 
+public function vantagens()
+{
+    return $this->belongsToMany(Vantagem::class, 'aluno_vantagem');
+}
+
+
+
 }

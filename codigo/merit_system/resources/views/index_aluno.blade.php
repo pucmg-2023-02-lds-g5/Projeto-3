@@ -38,7 +38,7 @@
                     <p class="text-gray-700 text-sm">Resgate vantagens com suas moedas.</p>
                 </div>
                 <!-- Substitua 'vantagens.index' pela rota correta para a página de vantagens -->
-                <a href="#" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Acessar</a>
+                <a href="{{ route('vantagens.alunos') }}" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Acessar</a>
             </div>
 
         </div>
