@@ -40,7 +40,7 @@
        <div class="grid grid-cols-3 gap-4">
        @if ($vantagens->count())
             @foreach ($vantagens as $vantagem)
-                <div class="bg-white shadow-lg rounded-lg p-6 transform transition duration-500 ease-in-out hover:scale-105 max-w-sm mx-auto min-h-[300px] flex flex-col justify-between">
+                <div class="bg-white shadow-lg rounded-lg p-6 transform transition duration-500 ease-in-out hover:scale-105 max-w-sm mx-auto    min-h-[300px] flex flex-col justify-between" style="height:400px; width:300px;">
                     <div>
                         <div class="w-full h-32 overflow-hidden">
                         <img src="{{ asset('images/' . $vantagem->imagem) }}" alt="{{ $vantagem->nome }}" class="w-full h-full object-cover object-center mb-2 rounded">
@@ -62,7 +62,7 @@
    </div>
 
    <div class="flex justify-center mt-4">
-    <a href="{{ route('vantagens.alunos') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded absolute top-0 left-0 mt-8">Voltar para Minhas Vantagens</a>
+    <a href="{{ route('vantagens.alunos') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-8">Voltar para Minhas Vantagens</a>
 
 </div>
 
