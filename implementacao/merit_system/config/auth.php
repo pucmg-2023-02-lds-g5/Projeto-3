@@ -100,7 +100,7 @@ return [
 
         'empresas' => [
             'driver' => 'eloquent',
-            'model' => App\Models\empresa::class,
+            'model' => App\Models\Empresa::class,
         ],
     ],
 
