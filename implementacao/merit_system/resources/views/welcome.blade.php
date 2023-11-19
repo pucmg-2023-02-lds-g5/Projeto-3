@@ -147,7 +147,7 @@ svg {
 </svg>
 <div class="message-box">
   <h1>Projeto LAB</h1>
-  <p>Sistema reconhecimento do mérito estudantil</p>
+  <p>Sistema de reconhecimento do mérito estudantil</p>
   <div class="buttons-con">
     <div class="action-link-wrap">
       <div class="dropdown">

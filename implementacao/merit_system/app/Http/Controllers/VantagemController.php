@@ -7,6 +7,9 @@ use App\Models\Vantagem;
 use App\Models\Empresa;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\CupomNotification;
+use App\Notifications\EmpresaNotification;
 
 
 class VantagemController extends Controller
@@ -74,6 +77,13 @@ public function resgatar($id)
         $aluno->vantagens()->attach($vantagem->id);
 
         // Enviar e-mail para o aluno e o parceiro
+        $codigo = $this->gerarCodigoUnico(); 
+
+        Notification::send($aluno, new CupomNotification($codigo, $vantagem->nome, $vantagem->custo_em_moedas, $vantagem->empresa->nome));
+
+        $empresa = $vantagem->empresa;
+
+        Notification::send($empresa, new EmpresaNotification($aluno, $codigo, $vantagem));
 
         // Redirecionar de volta com sucesso
         return back()->with('success', 'Vantagem resgatada com sucesso!');
@@ -82,6 +92,18 @@ public function resgatar($id)
     // Redirecionar de volta com erro
     return back()->with('error', 'Você não tem moedas suficientes para resgatar esta vantagem.');
 }
+
+public function gerarCodigoUnico($length = 6)
+{
+    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $codigo = '';
+    for ($i = 0; $i < $length; $i++) {
+        $codigo .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $codigo;
+}
+
 
 public function vantagensDisponiveis()
 {

@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Empresa; // Substitua 'Empresa' pelo nome do modelo correspondente
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\CupomNotification;
 
 
 class EmpresaController extends Controller

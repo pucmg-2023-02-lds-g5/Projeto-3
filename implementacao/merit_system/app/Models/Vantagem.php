@@ -21,9 +21,10 @@ class Vantagem extends Model
     ];
 
     public function empresa()
-    {
-        return $this->belongsTo(Empresa::class);
-    }
+{
+    return $this->belongsTo(Empresa::class, 'id_empresa', 'id');
+}
+
 
     public function alunos()
 {

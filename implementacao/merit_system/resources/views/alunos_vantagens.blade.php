@@ -31,11 +31,11 @@
        <div class="grid grid-cols-3 gap-4">
        @if ($vantagens->count())
             @foreach ($vantagens as $vantagem)
-                <div class="bg-white shadow-lg rounded-lg p-6 transform transition duration-500 ease-in-out hover:scale-105 max-w-sm mx-auto min-h-[300px] flex flex-col justify-between">
-                    <div>
-                    <div class="aspect-w-16 aspect-h-9">
-                        <img src="{{ asset('images/' . $vantagem->imagem) }}" alt="{{ $vantagem->nome }}" class="object-cover rounded">
-                    </div>
+                <div class="bg-white shadow-lg rounded-lg p-6 transform transition duration-500 ease-in-out hover:scale-105 max-w-sm mx-auto h-[500px] w-[400px] flex flex-col justify-between">
+                    <div class="flex flex-col justify-center">
+                        <div class="aspect-w-16 aspect-h-9">
+                            <img src="{{ asset('images/' . $vantagem->imagem) }}" alt="{{ $vantagem->nome }}" class="object-cover rounded h-[350px] w-[350px]">
+                        </div>
                         <h2 class="text-xl font-bold mb-2">{{ $vantagem->nome }}</h2>
                         <p class="text-gray-700 text-sm">{{ $vantagem->descricao }}</p>
                     </div>

@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Transacao;
-use App\Models\Aluno; // Substitua 'Aluno' pelo nome do modelo correspondente
+use App\Models\Aluno;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\CupomNotification;
 
 class AlunoController extends Controller
 {
@@ -90,7 +92,6 @@ public function crud()
     return view('crud_alunos', ['alunos' => $alunos]);
 }
 
-
 public function resgatarVantagem(Request $request, Vantagem $vantagem)
 {
     $aluno = Auth::guard('aluno')->user();
@@ -105,8 +106,23 @@ public function resgatarVantagem(Request $request, Vantagem $vantagem)
     $aluno->save();
 
     // Aqui você pode adicionar a lógica para enviar o email do cupom
+    $codigo = $this->gerarCodigoUnico(); // Substitua isso pela sua lógica de geração de código
+
+    Notification::send($aluno, new CupomNotification($codigo));
+    Notification::send($vantagem->empresa, new CupomNotification($codigo));
 
     return redirect()->route('aluno.dashboard')->with('success', 'Vantagem resgatada com sucesso!');
+}
+
+public function gerarCodigoUnico($length = 6)
+{
+    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $codigo = '';
+    for ($i = 0; $i < $length; $i++) {
+        $codigo .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $codigo;
 }
 
 public function show(Aluno $aluno)

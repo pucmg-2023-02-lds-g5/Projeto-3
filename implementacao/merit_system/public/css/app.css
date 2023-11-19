@@ -533,9 +533,6 @@ video {
 .bottom-0 {
   bottom: 0px;
 }
-.left-0 {
-  left: 0px;
-}
 .right-0 {
   right: 0px;
 }
@@ -610,6 +607,12 @@ video {
 .h-6 {
   height: 1.5rem;
 }
+.h-\[350px\] {
+  height: 350px;
+}
+.h-\[500px\] {
+  height: 500px;
+}
 .h-full {
   height: 100%;
 }
@@ -624,6 +627,12 @@ video {
 }
 .w-6 {
   width: 1.5rem;
+}
+.w-\[350px\] {
+  width: 350px;
+}
+.w-\[400px\] {
+  width: 400px;
 }
 .w-full {
   width: 100%;

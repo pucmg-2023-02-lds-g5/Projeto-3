@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Aluno;
 use App\Models\Transacao;
 use App\Models\Professor;
+use App\Notifications\MoedaRecebida;
+use Illuminate\Support\Facades\Notification;
 
 
 
@@ -98,8 +100,17 @@ public function enviarMoedas(Request $request)
     $professor->saldo -= $request->quantidade;
     $professor->save();
 
+     // Notifique o aluno
+     $detalhes = [
+        'quantidade' => $request->quantidade,
+        'professor' => $professor->nome,
+        'mensagem' => $request->mensagem,
+    ];
+    Notification::send($aluno, new MoedaRecebida($detalhes));
+
     return redirect()->route('professores.transacoes')->with('success', 'Moedas enviadas com sucesso');
 }
+
 
 
 
