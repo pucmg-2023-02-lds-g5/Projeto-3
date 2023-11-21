@@ -29,7 +29,7 @@ se este vídeo não estiver bom tem vários outros, mas qualquer coisa pode me c
 2. **Instalar dependências do Composer**: Navegue até a pasta do projeto clonado e execute `composer install` para instalar todas as dependências do Laravel.
 3. **Configurar o ambiente**: Copie o arquivo `.env.example` para `.env` e atualize as configurações do banco de dados de acordo com sua configuração local do MySQL. O arquivo `.env` é onde você define as variáveis de ambiente para o seu projeto. Ele é carregado pelo Laravel durante o bootstrap e todas as variáveis são colocadas no array `$_ENV` do PHP e também podem ser acessadas através da função `env()` do Laravel.
 4. **Gerar chave de aplicativo**: Execute `php artisan key:generate` para gerar uma chave de aplicativo.
-5. **Executar migrações**: Execute `php artisan migrate` para criar as tabelas no banco de dados.
+5. **Executar migrações**: Execute `php artisan migrate` para criar as tabelas no banco de dados. (se der algum problema com o banco de dados pode me chamar, mas qualquer coisa tem uma pasta aqui no repositório com todas as tabelas certinho e tal, acho mais seguro pegar elas pra clonar o banco)
 6. **Instalar dependências do Node.js**: Execute `npm install` para instalar todas as dependências do Node.js, incluindo Tailwind CSS.
 7. **Compilar CSS**: Execute `npm run dev` para compilar seu CSS.
 
